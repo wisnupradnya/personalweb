@@ -41,7 +41,7 @@ export default function Sosialmedia() {
             viewport={{ once: false }}
           >
             <Image
-              src="/instagram.png"
+              src="/Instagram.png"
               alt="Instagram"
               width={500}
               height={500}
@@ -77,7 +77,7 @@ export default function Sosialmedia() {
             viewport={{ once: false }}
           >
             <Image
-              src="/instagram.png"
+              src="/Instagram.png"
               alt="Instagram"
               width={500}
               height={500}
@@ -149,7 +149,7 @@ export default function Sosialmedia() {
             viewport={{ once: false }}
           >
             <Image
-              src="/youtube.png"
+              src="/Youtube.png"
               alt="YouTube"
               width={500}
               height={500}

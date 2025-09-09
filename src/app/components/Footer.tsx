@@ -44,7 +44,7 @@ export default function Footer() {
             className="hover:opacity-80"
           >
             <Image
-              src="/instagram.png"
+              src="/Instagram.png"
               alt="Instagram"
               width={28}
               height={28}
@@ -89,7 +89,7 @@ export default function Footer() {
             className="hover:opacity-80"
           >
             <Image
-              src="/youtube.png"
+              src="/Youtube.png"
               alt="YouTube"
               width={28}
               height={28}
