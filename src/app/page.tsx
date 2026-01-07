@@ -3,7 +3,7 @@ import Beranda from "./components/Beranda";
 import Aboutme from "./components/Aboutme";
 import Expert from "./components/Expert";
 import Appexpert from "./components/Appexpert";
-import Portofolio from "./components/Portofolio";
+// import Portofolio from "./components/Portofolio";
 import Sosialmedia from "./components/Sosialmedia";
 import Footer from "./components/Footer";
 
@@ -28,9 +28,9 @@ export default function Home() {
           <Appexpert />
         </section>
 
-        <section id="Portofolio" className="scroll-mt-0">
+        {/* <section id="Portofolio" className="scroll-mt-0">
           <Portofolio />
-        </section>
+        </section> */}
         <section id="Sosialmedia" className="scroll-mt-0">
           <Sosialmedia />
           <Footer />

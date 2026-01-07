@@ -2,108 +2,103 @@
 
 import { motion } from "framer-motion";
 
-type Step = {
-  title: string;
-  subtitle?: string;
-  year: string;
-  desc: string;
-};
-
-const steps: Step[] = [
+const skills = [
   {
-    title: "Sekolah Menengah Pertama",
-    subtitle: "SMPN 1 Mengwi",
-    year: "2017 – 2020",
-    desc: "Dasar-dasar akademik.",
+    title: "Frontend Development",
+    desc: "Building responsive and scalable interfaces using modern technologies.",
   },
   {
-    title: "Sekolah Menengah Atas",
-    subtitle: "SMAN 1 Mengwi",
-    year: "2020 – 2023",
-    desc: "Fokus di Ilmu Ilmu Sosial",
+    title: "Next.js & React",
+    desc: "Component-driven development with performance and SEO in mind.",
   },
   {
-    title: "Kuliah",
-    subtitle: "Primakara University",
-    year: "2023",
-    desc: "Fokus di pemrograman & proyek kreatif.",
+    title: "UI / UX & Figma",
+    desc: "Designing clean, intuitive interfaces focused on user experience.",
   },
-  // Tambah lagi kalau perlu…
+  {
+    title: "Photography & Videography",
+    desc: "Visual storytelling for brands, products, and digital content.",
+  },
 ];
 
-export default function EducationTimeline() {
+const education = [
+  {
+    title: "Primakara University",
+    year: "2023 – Present",
+    desc: "Computer Science with focus on frontend development and creative projects.",
+  },
+  {
+    title: "SMAN 1 Mengwi",
+    year: "2020 – 2023",
+    desc: "Social sciences with creative and digital exploration.",
+  },
+];
+
+export default function ProfileSection() {
   return (
-    <section
-      id="education"
-      className="py-14 px-10 lg:px-50 bg-white text-black"
-    >
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
-        Riwayat Pendidikan
-      </h2>
+    <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 px-6 py-28 lg:px-56 text-white">
+      {/* Blur accent */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-indigo-500/20 blur-[140px] rounded-full" />
 
-      {/* Garis tengah untuk desktop */}
-      <div className="relative">
-        <div className="hidden md:block absolute left-1/2 top-0 -translate-x-1/2 h-full w-px bg-black" />
+      {/* Intro */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="relative z-10 max-w-3xl mb-24"
+      >
+        <h2 className="text-3xl lg:text-5xl font-bold leading-tight">
+          Frontend Developer & Creative
+        </h2>
+        <p className="mt-6 text-lg text-gray-300">
+          I build modern web interfaces and visual content that help brands
+          communicate clearly, efficiently, and professionally.
+        </p>
+      </motion.div>
 
-        <ul className="space-y-10">
-          {steps.map((s, i) => {
-            const isLeft = i % 2 === 0;
-            return (
-              <li
-                key={i}
-                className="md:grid md:grid-cols-2 md:gap-10 items-center"
-              >
-                {/* Kolom kiri/kanan bergantian di desktop */}
-                <div className={isLeft ? "md:order-1" : "md:order-2"}>
-                  <motion.div
-                    initial={{ y: 100, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: false, amount: 0.5 }}
-                    className="relative md:pr-10 md:text-right"
-                  >
-                    {/* Dot di garis tengah (desktop) */}
-                    <span
-                      className={`hidden md:block absolute top-6 ${
-                        isLeft ? "right-[-9px]" : "left-[-9px]"
-                      } h-4 w-4 rounded-full bg-white border-2 border-amber-500`}
-                    />
-                    <p className="text-sm text-gray-500">{s.year}</p>
-                    <h3 className="text-xl font-semibold">{s.title}</h3>
-                    {s.subtitle && (
-                      <p className="text-gray-700">{s.subtitle}</p>
-                    )}
-                    <p className="mt-2 text-gray-600">{s.desc}</p>
-                  </motion.div>
-                </div>
-
-                <div className={isLeft ? "md:order-2" : "md:order-1"}>
-                  <motion.div
-                    initial={{ y: 100, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: false, amount: 0.5 }}
-                    className={`relative ${isLeft ? "md:pl-10" : "md:pr-10"}`}
-                  >
-                    {/* Dot untuk mobile (garis kiri) */}
-                    <div className="md:hidden absolute left-0 top-6 h-3 w-3 rounded-full bg-amber-500" />
-
-                    {/* Kartu isi (tanpa foto) */}
-                    <div className="rounded-2xl shadow border bg-white p-6">
-                      <p className="text-sm text-gray-500">{s.year}</p>
-                      <p className="font-medium text-lg">{s.title}</p>
-                      {s.subtitle && (
-                        <p className="text-gray-700">{s.subtitle}</p>
-                      )}
-                      <p className="mt-2 text-gray-600">{s.desc}</p>
-                    </div>
-                  </motion.div>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+      {/* Skills */}
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 mb-28">
+        {skills.map((skill, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: i * 0.05 }}
+            viewport={{ once: true }}
+            className="rounded-3xl border border-white/20 bg-white/5 backdrop-blur-md p-8 hover:bg-white/10 transition"
+          >
+            <h3 className="text-xl font-semibold">{skill.title}</h3>
+            <p className="mt-3 text-gray-300">{skill.desc}</p>
+          </motion.div>
+        ))}
       </div>
+
+      {/* Education */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="relative z-10"
+      >
+        <h3 className="text-2xl font-bold mb-10">Education</h3>
+
+        <div className="space-y-6 max-w-2xl">
+          {education.map((e, i) => (
+            <div
+              key={i}
+              className="flex flex-col sm:flex-row sm:justify-between border-b border-white/20 pb-4"
+            >
+              <div>
+                <p className="font-medium">{e.title}</p>
+                <p className="text-sm text-gray-300">{e.desc}</p>
+              </div>
+              <p className="text-sm text-gray-400 mt-2 sm:mt-0">{e.year}</p>
+            </div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 }

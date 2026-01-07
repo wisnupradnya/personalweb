@@ -1,175 +1,95 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
 import { motion } from "framer-motion";
+
+const socials = [
+  {
+    name: "Instagram Personal",
+    username: "@mdwisnuu_",
+    link: "https://instagram.com/mdwisnuu_",
+    icon: "/Instagram.png",
+  },
+  {
+    name: "Instagram Creative",
+    username: "@inferno.creativee",
+    link: "https://instagram.com/inferno.creativee",
+    icon: "/Instagram.png",
+  },
+  {
+    name: "TikTok",
+    username: "@Zentaa16",
+    link: "https://www.tiktok.com/@zentaa16",
+    icon: "/tiktok.png",
+  },
+  {
+    name: "YouTube",
+    username: "@mdwisnuu16",
+    link: "https://www.youtube.com/@mdwisnuu16",
+    icon: "/Youtube.png",
+  },
+];
 
 export default function Sosialmedia() {
   return (
-    <div className="bg-white px-6 py-5 lg:px-60 lg:py-20">
-      {/* Judul */}
+    <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 px-6 py-20 lg:px-60">
+      {/* Decorative blur */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-indigo-500/20 blur-[120px] rounded-full" />
+
+      {/* Title */}
       <motion.h2
-        className="text-center text-2xl lg:text-4xl font-bold mb-8 text-gray-800"
-        initial={{ opacity: 0, y: -30 }}
+        className="relative z-10 text-center text-3xl lg:text-4xl font-bold text-white mb-14"
+        initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        viewport={{ once: false }} // <-- biar bisa animasi lagi
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
       >
-        Sosial Media
+        Social Media
       </motion.h2>
 
-      {/* Background container */}
-      <motion.div
-        className="bg-gray-200 rounded-3xl flex flex-wrap justify-center p-10 lg:p-20 gap-y-8"
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0 }}
-        viewport={{ once: false }}
-      >
-        {/* Instagram 1 */}
-        <motion.div
-          className="w-full md:w-1/2 flex items-center gap-3"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: false }}
-        >
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: false }}
-          >
-            <Image
-              src="/Instagram.png"
-              alt="Instagram"
-              width={500}
-              height={500}
-              className="w-10 lg:w-30 object-cover"
-            />
-          </motion.div>
+      {/* Cards */}
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        {socials.map((item, index) => (
           <motion.a
-            href="https://instagram.com/mdwisnuu_"
+            key={index}
+            href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline text-sm lg:text-2xl"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: false }}
+            className="group flex items-center gap-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 p-6 transition-all"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.15, duration: 0.6 }}
+            viewport={{ once: true }}
+            whileHover={{
+              scale: 1.04,
+              boxShadow: "0 0 35px rgba(99,102,241,0.4)",
+            }}
           >
-            @mdwisnuu_
-          </motion.a>
-        </motion.div>
+            {/* Icon */}
+            <motion.div
+              whileHover={{ rotate: 5 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/10"
+            >
+              <Image
+                src={item.icon}
+                alt={item.name}
+                width={28}
+                height={28}
+                className="object-contain"
+              />
+            </motion.div>
 
-        {/* Instagram 2 */}
-        <motion.div
-          className="w-full md:w-1/2 flex items-center gap-3"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: false }}
-        >
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: false }}
-          >
-            <Image
-              src="/Instagram.png"
-              alt="Instagram"
-              width={500}
-              height={500}
-              className="w-10 lg:w-30 object-cover"
-            />
-          </motion.div>
-          <motion.a
-            href="https://instagram.com/inferno.creativee"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline text-sm lg:text-2xl"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: false }}
-          >
-            @inferno.creativee
+            {/* Text */}
+            <div className="flex flex-col">
+              <span className="text-lg font-semibold text-white">
+                {item.username}
+              </span>
+              <span className="text-sm text-gray-300">{item.name}</span>
+            </div>
           </motion.a>
-        </motion.div>
-
-        {/* TikTok */}
-        <motion.div
-          className="w-full md:w-1/2 flex items-center gap-3"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: false }}
-        >
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: false }}
-          >
-            <Image
-              src="/tiktok.png"
-              alt="TikTok"
-              width={500}
-              height={500}
-              className="w-10 lg:w-30 object-cover"
-            />
-          </motion.div>
-          <motion.a
-            href="https://www.tiktok.com/@zentaa16?is_from_webapp=1&sender_device=pc"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline text-sm lg:text-2xl"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: false }}
-          >
-            @Zentaa16
-          </motion.a>
-        </motion.div>
-
-        {/* YouTube */}
-        <motion.div
-          className="w-full md:w-1/2 flex items-center gap-3"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: false }}
-        >
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: false }}
-          >
-            <Image
-              src="/Youtube.png"
-              alt="YouTube"
-              width={500}
-              height={500}
-              className="w-10 lg:w-30 object-cover"
-            />
-          </motion.div>
-          <motion.a
-            href="https://www.youtube.com/@mdwisnuu16"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline text-sm lg:text-2xl"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: false }}
-          >
-            @mdwisnuu16
-          </motion.a>
-        </motion.div>
-      </motion.div>
-    </div>
+        ))}
+      </div>
+    </section>
   );
 }

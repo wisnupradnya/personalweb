@@ -1,132 +1,93 @@
-"use client";
+// "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import Image from "next/image";
-import { motion } from "framer-motion";
+// import Image from "next/image";
+// import { motion } from "framer-motion";
 
-export default function ImageSwiper() {
-  return (
-    <div className="bg-white px-6 py-20 lg:pt-20">
-      <motion.div
-        initial={{ y: 100, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="w-full max-w-3xl mx-auto bg-gray-200 rounded-3xl px-6 mb-10"
-      >
-        <div className="text-black">
-          <motion.h1
-            initial={{ y: 100, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-black text-2xl lg:text-5xl font-bold flex flex-wrap justify-center py-10 lg:py-20"
-          >
-            My Portofolio Project
-          </motion.h1>
-        </div>
-        <div>
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={20}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 3000 }}
-            loop
-            className="rounded-2xl"
-          >
-            {/* Slide 1 */}
-            <SwiperSlide>
-              <div className="flex flex-col justify-center items-center">
-                <Image
-                  src="/web1.png"
-                  alt="Slide 1"
-                  width={500}
-                  height={500}
-                  className="object-cover"
-                />
-                <p className="text-black mb-10 lg:mb-10 mt-5 lg:mt-10">
-                  Eccomers Project Front End
-                </p>
-              </div>
-            </SwiperSlide>
+// const projects = [
+//   {
+//     title: "E-Commerce Frontend",
+//     desc: "Responsive UI for online store",
+//     image: "/web1.png",
+//   },
+//   {
+//     title: "Interior Design Website",
+//     desc: "Clean layout for design studio",
+//     image: "/web2.png",
+//   },
+//   {
+//     title: "Navigation System UI",
+//     desc: "User-friendly navigation flow",
+//     image: "/web3.png",
+//   },
+//   {
+//     title: "Landing Page Frontend",
+//     desc: "Modern marketing landing page",
+//     image: "/web4.png",
+//   },
+//   {
+//     title: "Store Management System",
+//     desc: "Dashboard & data management UI",
+//     image: "/web5.png",
+//   },
+//   {
+//     title: "Modern Web Interface",
+//     desc: "Minimal & scalable frontend",
+//     image: "/web6.png",
+//   },
+// ];
 
-            {/* Slide 2 */}
-            <SwiperSlide>
-              <div className="flex flex-col justify-center items-center">
-                <Image
-                  src="/web2.png"
-                  alt="Slide 2"
-                  width={500}
-                  height={500}
-                  className="object-cover"
-                />
-                <p className="text-black mb-10 lg:mb-10 mt-5 lg:mt-10">
-                  Interior Web Project
-                </p>
-              </div>
-            </SwiperSlide>
+// export default function Portfolio() {
+//   return (
+//     <section className="bg-white px-6 py-24 lg:px-48">
+//       {/* Header */}
+//       <motion.div
+//         initial={{ opacity: 0, y: 40 }}
+//         whileInView={{ opacity: 1, y: 0 }}
+//         transition={{ duration: 0.6 }}
+//         viewport={{ once: true }}
+//         className="mb-16"
+//       >
+//         <h2 className="text-3xl lg:text-5xl font-bold text-gray-900">
+//           Portfolio
+//         </h2>
+//         <p className="mt-4 text-gray-500 max-w-xl">
+//           Selected frontend projects focused on clarity, usability, and clean
+//           implementation.
+//         </p>
+//       </motion.div>
 
-            {/* Slide 3 */}
-            <SwiperSlide>
-              <div className="flex flex-col justify-center items-center">
-                <Image
-                  src="/web3.png"
-                  alt="Slide 3"
-                  width={500}
-                  height={500}
-                  className="object-cover"
-                />
-                <p className="text-black mb-10 lg:mb-10 mt-5 lg:mt-10">
-                  Front End Navigation Project
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="flex flex-col justify-center items-center">
-                <Image
-                  src="/web4.png"
-                  alt="Slide 3"
-                  width={500}
-                  height={500}
-                  className="object-cover"
-                />
-                <p className="text-black mb-10 lg:mb-10 mt-5 lg:mt-10">
-                  Front End Project
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="flex flex-col justify-center items-center">
-                <Image
-                  src="/web5.png"
-                  alt="Slide 3"
-                  width={500}
-                  height={500}
-                  className="object-cover"
-                />
-                <p className="text-black mb-10 lg:mb-10 mt-5 lg:mt-10">
-                  System Management Toko Project
-                </p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="flex flex-col justify-center items-center">
-                <Image
-                  src="/web6.png"
-                  alt="Slide 3"
-                  width={500}
-                  height={500}
-                  className="object-cover"
-                />
-                <p className="text-black mb-10 lg:mb-10 mt-5 lg:mt-10">
-                  Front End Project
-                </p>
-              </div>
-            </SwiperSlide>
-          </Swiper>
-        </div>
-      </motion.div>
-    </div>
-  );
-}
+//       {/* Projects */}
+//       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+//         {projects.map((item, i) => (
+//           <motion.div
+//             key={i}
+//             initial={{ opacity: 0, y: 30 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.5, delay: i * 0.05 }}
+//             viewport={{ once: true }}
+//             className="group"
+//           >
+//             {/* Image */}
+//             <div className="overflow-hidden rounded-2xl border border-gray-200">
+//               <Image
+//                 src={item.image}
+//                 alt={item.title}
+//                 width={1200}
+//                 height={800}
+//                 className=" lg:h-[320px] object-cover transition-transform duration-500 group-hover:scale-105"
+//               />
+//             </div>
+
+//             {/* Text */}
+//             <div className="mt-4">
+//               <h3 className="text-xl font-semibold text-gray-900">
+//                 {item.title}
+//               </h3>
+//               <p className="mt-1 text-gray-500 text-sm">{item.desc}</p>
+//             </div>
+//           </motion.div>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }

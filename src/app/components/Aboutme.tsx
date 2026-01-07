@@ -1,78 +1,84 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
-import { motion as m } from "framer-motion";
+import { motion } from "framer-motion";
 
-export default function Aboutme() {
+export default function AboutMe() {
   return (
-    <div className="bg-white px-10 py-10 lg:px-20 lg:py-30">
-      <div>
-        <m.h1
-          initial={{ y: 100, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: false, amount: 0.5 }}
-          className="text-black font-bold flex justify-center text-2xl lg:text-5xl mb-10 lg:mb-20"
-        >
-          About Me
-        </m.h1>
-      </div>
-      <div className=" flex flex-row justify-center ">
-        <m.div
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className=""
-        >
-          <Image
-            src="/fotodiri.jpg"
-            alt="foto"
-            width={300}
-            height={100}
-            className="rounded-full relative w-50 h-50 lg:w-100 lg:h-100"
-          />
-        </m.div>
-      </div>
-      <m.div
-        initial={{ y: 100, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
+    <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 px-6 py-32 lg:px-48 text-white">
+      {/* blur accent */}
+      <div className="absolute top-20 right-0 w-[400px] h-[400px] bg-indigo-500/20 blur-[140px] rounded-full" />
+      <div className="absolute bottom-20 left-0 w-[300px] h-[300px] bg-purple-500/20 blur-[120px] rounded-full" />
+
+      {/* Title */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="relative z-10 text-center mb-20"
       >
-        <div>
-          <h1 className="text-black flex justify-center text-3xl lg:text-5xl py-5 lg:py-10 font-bold">
-            Draft About Me
-          </h1>
-          <m.div
-            initial={{ y: 100, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-2xl mx-auto px-4  bg-gray-200  rounded-3xl"
-          >
-            <m.p
-              initial={{ y: 100, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-black text-justify px-4 py-4 "
-            >
-              Halo, saya I Made Wisnu Pradnya Yoga, seorang pemuda Bali berusia
-              20 tahun yang saat ini sedang menempuh pendidikan di Primakara
-              University. Saya memiliki minat besar di bidang film, serta sedang
-              mendalami pengembangan web dengan teknologi Next.js, HTML, dan
-              CSS. Selain itu, saya juga aktif berkarya di dunia fotografi,
-              videografi, dan pilot drone. Sejak SMA, saya pernah meraih juara
-              fotografi tingkat sekolah di SMA Negeri 1 Mengwi, pengalaman yang
-              semakin memperkuat ketertarikan saya pada dunia visual. Salah satu
-              karya yang cukup berkesan adalah film “Two Side of Bali”, serta
-              beberapa project kecil lainnya yang saya kerjakan untuk terus
-              mengasah keterampilan. Saat ini, saya berfokus untuk terus
-              berkembang, baik dalam industri kreatif maupun teknologi, dengan
-              harapan dapat menghasilkan karya yang bermanfaat sekaligus
-              memperkenalkan identitas budaya Bali melalui media digital.
-            </m.p>
-          </m.div>
-        </div>
-      </m.div>
-    </div>
+        <h2 className="text-3xl lg:text-5xl font-bold">About Me</h2>
+        <p className="mt-4 text-gray-300 max-w-xl mx-auto">
+          A short story about who I am, what I do, and what I love to build.
+        </p>
+      </motion.div>
+
+      {/* Content */}
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+        {/* Photo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="flex justify-center"
+        >
+          <div className="relative w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border border-white/20 shadow-xl">
+            <Image
+              src="/fotodiri.jpg"
+              alt="I Made Wisnu Pradnya Yoga"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </motion.div>
+
+        {/* Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="rounded-3xl border border-white/15 bg-white/5 backdrop-blur-md p-8 lg:p-10"
+        >
+          <h3 className="text-2xl lg:text-3xl font-semibold mb-4">
+            I Made Wisnu Pradnya Yoga
+          </h3>
+
+          <p className="text-gray-300 leading-relaxed text-sm lg:text-base">
+            Saya adalah seorang mahasiswa berusia 20 tahun dari Bali yang saat
+            ini menempuh pendidikan di{" "}
+            <span className="text-white font-medium">Primakara University</span>
+            . Saya memiliki ketertarikan kuat pada dunia visual, khususnya
+            fotografi, videografi, dan film, serta pengembangan web modern
+            menggunakan
+            <span className="text-white font-medium"> Next.js</span>.
+            <br />
+            <br />
+            Sejak SMA, saya aktif mengembangkan skill kreatif dan pernah meraih
+            juara fotografi tingkat sekolah di SMAN 1 Mengwi. Salah satu karya
+            yang paling berkesan adalah film pendek{" "}
+            <span className="italic">“Two Side of Bali”</span>, yang menjadi
+            awal eksplorasi saya dalam storytelling visual.
+            <br />
+            <br />
+            Saat ini, saya terus menggabungkan kreativitas dan teknologi untuk
+            menciptakan karya digital yang tidak hanya fungsional, tetapi juga
+            memiliki nilai estetika dan identitas budaya Bali.
+          </p>
+        </motion.div>
+      </div>
+    </section>
   );
 }

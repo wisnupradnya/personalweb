@@ -2,107 +2,97 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const menu = [
+    { label: "Home", href: "#Beranda" },
+    { label: "About Me", href: "#Aboutme" },
+    { label: "Expert", href: "#Appexpert" },
+    { label: "Portfolio", href: "#portfolio" },
+    { label: "Social Media", href: "#Sosialmedia" },
+  ];
+
   return (
     <>
-      {/* Navbar utama */}
-      <nav className="bg-white text-black sticky top-0 z-50 shadow-md">
-        <div className="flex justify-between items-center px-6 md:px-20 py-4">
-          {/* Logo */}
-          <h1 className="text-xl font-bold">wisnu Pradnya</h1>
+      {/* NAVBAR */}
+      <nav className="fixed top-0 w-full z-50">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mt-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-lg">
+            <div className="flex items-center justify-between px-6 py-4">
+              {/* Logo */}
+              <Link
+                href="#home"
+                className="text-white font-bold text-lg tracking-wide"
+              >
+                mdwsprd<span className="text-indigo-400"></span>
+              </Link>
 
-          {/* Menu Desktop */}
-          <div className="hidden md:flex gap-6 text-sm md:text-lg lg:text-xl">
-            <Link href="/#Beranda" className="hover:text-amber-500 transition">
-              Home
-            </Link>
-            <Link href="/#Aboutme" className="hover:text-amber-500 transition">
-              About Me
-            </Link>
-            <Link
-              href="/#Appexpert"
-              className="hover:text-amber-500 transition"
-            >
-              Expert
-            </Link>
-            <Link
-              href="/#Portofolio"
-              className="hover:text-amber-500 transition"
-            >
-              Portofolio
-            </Link>
-            <Link
-              href="/#Sosialmedia"
-              className="hover:text-amber-500 transition"
-            >
-              Social Media
-            </Link>
+              {/* Desktop Menu */}
+              <div className="hidden md:flex gap-8 text-sm text-gray-300">
+                {menu.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="hover:text-white transition"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+
+              {/* Hamburger */}
+              <button
+                onClick={() => setIsOpen(true)}
+                className="md:hidden text-white"
+              >
+                <span className="block w-6 h-0.5 bg-white mb-1" />
+                <span className="block w-6 h-0.5 bg-white mb-1" />
+                <span className="block w-6 h-0.5 bg-white" />
+              </button>
+            </div>
           </div>
-
-          {/* Tombol Hamburger */}
-          <button
-            className="md:hidden flex flex-col gap-1.5 relative w-6 h-6 z-50"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <span
-              className={`block h-0.5 w-6 bg-black transition-transform duration-300 ${
-                isOpen ? "rotate-45 translate-y-1.5" : ""
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-6 bg-black transition-transform duration-300 ${
-                isOpen ? "-rotate-45 -translate-y-1.5" : ""
-              }`}
-            />
-          </button>
         </div>
       </nav>
 
-      {/* Menu Mobile Overlay (dipisah dari nav biar ga dorong konten) */}
-      <div
-        className={`fixed inset-0 text-black bg-white flex flex-col items-center justify-center gap-8 text-xl font-medium transform transition-transform duration-500 ease-in-out md:hidden z-40 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <Link
-          href="/#Beranda"
-          onClick={() => setIsOpen(false)}
-          className="hover:text-amber-500 transition"
-        >
-          Home
-        </Link>
-        <Link
-          href="/#Aboutme"
-          onClick={() => setIsOpen(false)}
-          className="hover:text-amber-500 transition"
-        >
-          About Me
-        </Link>
-        <Link
-          href="/#Appexpert"
-          onClick={() => setIsOpen(false)}
-          className="hover:text-amber-500 transition"
-        >
-          Expert
-        </Link>
-        <Link
-          href="/#Portofolio"
-          onClick={() => setIsOpen(false)}
-          className="hover:text-amber-500 transition"
-        >
-          Portofolio
-        </Link>
-        <Link
-          href="/#Sosialmedia"
-          onClick={() => setIsOpen(false)}
-          className="hover:text-amber-500 transition"
-        >
-          Social Media
-        </Link>
-      </div>
+      {/* MOBILE MENU */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-lg flex flex-col items-center justify-center gap-10"
+          >
+            {menu.map((item, i) => (
+              <motion.div
+                key={item.label}
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <Link
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-2xl font-semibold text-white hover:text-indigo-400 transition"
+                >
+                  {item.label}
+                </Link>
+              </motion.div>
+            ))}
+
+            {/* Close Button */}
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-8 right-8 text-white text-3xl"
+            >
+              ✕
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

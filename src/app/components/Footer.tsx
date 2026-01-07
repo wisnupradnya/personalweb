@@ -18,7 +18,7 @@ export default function Footer() {
 
         {/* Navigation */}
         <div className="flex flex-wrap justify-center gap-6 text-sm">
-          <Link href="#about" className="hover:text-white transition">
+          <Link href="#Beranda" className="hover:text-white transition">
             Home
           </Link>
           <Link href="#Aboutme" className="hover:text-white transition">
